@@ -1,0 +1,232 @@
+select,
+textarea,
+input[type=text],
+input[type=email],
+input[type=password]
+{
+    font: inherit;
+    border: 0 none;
+    background: none;
+    display: block;
+    width: 100%;
+    background: #FFF;
+    line-height: initial;
+    -webkit-appearance: none;
+    border-radius: @radius;
+    border: 2px solid #DDD;
+    padding: @gutter / 2;
+    font-size: 16px;
+    font-family: @font-primary;
+
+    &:hover,
+    &:focus {
+        border-color: #AAA;
+    }
+}
+
+button,
+input[type=submit],
+input[type=button] {
+    cursor: pointer;
+    font: inherit;
+    background: none;
+    -webkit-appearance: none;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    overflow: hidden !important;
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    width: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    display: block;
+    position: relative;
+}
+
+select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+.form__group {
+    padding-bottom: @gutter / 2;
+    position: relative;
+}
+
+.form__label {
+    margin-bottom: @gutter / 8;
+    color: @text-secondary;
+}
+
+.form__input {
+    position: relative;
+}
+
+.form__input--select:after {
+    content: "";
+    position: absolute;
+    right: @gutter / 2;
+    top: 50%;
+    transform: translateY( -50% );
+    color: @text-secondary;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent; 
+    border-right: 5px solid transparent; 
+    border-top: 5px solid;
+    pointer-events: none;
+}
+
+/**
+ * Checkbox and radio
+ */
+
+.form__group--radio label,
+.form__group--checkbox label {
+    display: flex;
+    cursor: pointer;
+    align-items: flex-start;
+}
+
+.form__group--radio .form__label,
+.form__group--checkbox .form__label {
+    margin-bottom: 0;
+}
+
+.form__group--radio label + label {
+    margin-top: @gutter / 3;
+}
+
+.radio-text,
+.checkbox-text {
+    display: inline-block;
+}
+
+.form__icon {
+    flex-shrink: 0;
+    border: 1px solid @dividers;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: @gutter / 4;
+    position: relative;
+    background: #FFF;
+    margin-top: -1px;
+}
+
+.form__group--radio .form__icon {
+    border-radius: 50%;
+}
+
+.form__group--checkbox .form__icon {
+    border-radius: @radius;
+}
+
+.form__group--radio input[type=radio] ~ .form__icon:after {
+    content: '\26AB';
+    font-size: 6px;
+}
+
+.form__group--checkbox input[type=checkbox] ~ .form__icon:after {
+    content: '\02714';
+    font-size: 10px;
+}
+
+.form__group--radio input[type=radio] ~ .form__icon:after,
+.form__group--checkbox input[type=checkbox] ~ .form__icon:after {
+    font-family: FontAwesome;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    text-align: center;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+.form__group--radio input[type=radio]:checked ~ .form__icon:after,
+.form__group--checkbox input[type=checkbox]:checked ~ .form__icon:after {
+   opacity: 1;
+}
+
+/**
+ * Errors
+ */
+
+.form__group--has-error input[type="text"], 
+.form__group--has-error input[type="email"], 
+.form__group--has-error input[type="password"], 
+.form__group--has-error select, 
+.form__group--has-error textarea {
+    border-color: #ff000f;
+}
+
+.form__error {
+    margin-top: @gutter / 8;
+    text-transform: uppercase;
+    color: #ff000f;
+    font-size: 12px;
+}
+
+.form__help {
+    color: @text-secondary;
+    margin-top: @gutter / 8;
+    font-size: 12px;
+}
+
+.form__required {
+    font-size: 14px;
+    color: #ff000f;
+}
+
+.form__required:after {
+    content: "*";
+}
+
+.form__group > .form__label {
+	margin-bottom: @gutter / 2;
+	display: block;
+	font-weight: bold;
+}
+
+/**
+ * Disabled
+ */
+input[type=text]:disabled,
+input[type=email]:disabled,
+input[type=password]:disabled,
+select[disabled] {
+    background: @disabled;
+    border-color: darken( @disabled , 10%);
+    cursor: not-allowed;
+}
+
+input[type=checkbox]:disabled,
+input[type=radio]:disabled {
+	color: @disabled;
+}

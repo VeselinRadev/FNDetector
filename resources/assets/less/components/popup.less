@@ -1,0 +1,144 @@
+[id^="popup-"] {
+	display: none;
+}
+
+.popup {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .4);
+	z-index: 9999;
+	width: 100%;
+	height: 100%;
+
+	display: none;
+
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+.popup-visible .popup {
+	display: flex;
+}
+
+.popup__inner {
+	width: 100%;
+	display: flex;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	padding: @gutter (@gutter * 2);
+}
+
+.popup__container {
+	align-self: center;
+	background: #FFF;
+	padding: @gutter * 2;
+	width: 100%;
+	position: relative;
+	margin: auto;
+}
+
+.popup__container--max-width {
+	max-width: 480px;
+}
+
+.popup__container--long-max-width {
+	max-width: 720px;
+}
+
+.popup__close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: @gutter * 2;
+	height: @gutter * 2;
+	border-radius: 100%;
+	z-index: 3;
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 15px;
+		right: 15px;
+		border-top: 2px solid #333;
+        transform: rotateZ(45deg);
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 15px;
+		right: 15px;
+		border-top: 2px solid #333;
+        transform: rotateZ(-45deg);
+	}
+
+	&:hover:before,
+	&:hover:after {
+		border-top-color: #000;
+	}
+}
+
+@media screen and (max-width: 768px) {
+
+	.is-ios body.popup-visible-fix,
+	.android body.popup-visible-fix {
+		padding-top: 0 !important;
+	}
+
+	.is-ios body.popup-visible-fix .page-wrapper,
+	.android body.popup-visible-fix .page-wrapper {
+		display: none;
+	}
+
+	html.is-ios,
+	html.android,
+	html.is-ios body,
+	html.android body {
+		height: 100%;
+	}
+
+	.is-ios .popup,
+	.android .popup {
+		position: relative !important;
+		height: 100%;
+	}
+
+	.is-ios .popup__inner,
+	.android .popup__inner {
+		overflow: visible;
+	}
+
+	.popup__container {
+		padding: @gutter;
+		padding-top: @gutter;
+		width: 100%;
+		min-height: 100%;
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		overflow: hidden;
+		margin: 0;
+		max-width: 100% !important;
+		align-self: flex-start;
+		flex-direction: column;
+	}
+
+	.popup__content {
+		width: 100%;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	.popup__inner {
+		align-items: flex-start;
+		padding: 0;
+		background: #FFF;
+	}
+
+}

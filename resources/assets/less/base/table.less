@@ -1,0 +1,41 @@
+table {
+	border: none;
+    border-collapse: collapse;
+    background: #FFF;
+    border-radius: @radius;
+    overflow: hidden;
+}
+
+th, td {
+	text-align: left;
+	padding: @gutter / 2;
+	border: none;
+}
+
+.table--full-width {
+	width: 100%;
+}
+
+.table__number {
+	text-align: right;
+}
+
+.table--striped thead tr {
+	background: rgba(0, 0, 0, .1);
+}
+
+.table--striped tr:nth-child(even) {
+	background: rgba(0, 0, 0, .1);
+}
+
+.tablecol-shrink {
+	width: 1%;
+}
+
+.table__col--shrink {
+	width: 1%;
+}
+
+.table__col--grow {
+	width: 100%;
+}
