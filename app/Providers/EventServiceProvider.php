@@ -25,7 +25,6 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\CheckTextQuality',
             'App\Listeners\CheckLink',
             'App\Listeners\GetGoogleSearchResults',
-            'App\Listeners\CheckForConjunction',
             'App\Listeners\ProcessResults',
         ],
     ];

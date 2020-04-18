@@ -41,6 +41,19 @@ class GetGoogleSearchResults
         $output = array_merge($o1, $o2);
         $output = array_unique($output);
         $output = array_values($output);
+        for($i = 0; $i < sizeof($output) - 1; $i++){
+            if($i != ""){
+                for($j = $i + 1; $j < sizeof($output); $j++){
+                    if($output[$j] == "")break;
+                    if(getGoogleSearchResults::getSiteName($output[$i]) == getGoogleSearchResults::getSiteName($output[$j])){
+                        $output[$j] = "";
+                    }
+                }
+            }
+        }
+        sort($output);
+        $output = array_unique($output);
+        $output = array_values($output);
         return $output;
     }
 
@@ -60,5 +73,12 @@ class GetGoogleSearchResults
             }
         }
         return $output;
+    }
+    private function getSiteName($url){
+        $url = str_replace("https://", '', $url);
+        $url = str_replace("http://", '', $url);
+        $url = str_replace("www.", '', $url);
+        $url = substr($url, 0, strpos($url, '/'));
+        return $url;
     } 
 }
