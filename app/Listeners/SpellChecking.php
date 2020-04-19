@@ -29,8 +29,8 @@ class SpellChecking
     
     public function handle($event)
     {
-        //$event->article->mistakes = SpellChecking::check($event->article->text);
-        $event->article->mistakes = array();
+        $event->article->mistakes = SpellChecking::check($event->article->text);
+        //$event->article->mistakes = array();
     }
     
     private function check($text){

@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::post('/get_info', 'ArticlesController@getInfo')->name('article_get_info');
 Route::post('/check', 'ArticlesController@cropText')->name('article_check');

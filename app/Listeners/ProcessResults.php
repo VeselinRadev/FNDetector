@@ -41,12 +41,12 @@ class ProcessResults
                 return  '<h4  class="collapsible">'."❌ Новината не е актуална "
                 .'</h4><div class="content"><ul><li>Публикувана е на '.date(("d.m.Y"), strtotime($date)).'</li></ul></br></div>';
             }else{
-                return "✔️ Новината е актуална ".
+                return '<h4  class="collapsible">'."✔️ Новината е актуална ".
                 '</h4><div class="content"><ul><li>Публикувана е на '.date(("d.m.Y"), strtotime($date)).'</li></ul></br></div>';
             }
         }else{
             return '<h4  class="collapsible">'."❌  Дата е неизвестна"
-                    .'</h4><div class="content"><ul><li>В сайтът не е посочена дата на публикуване</li></ul></br></div>';
+                    .'</h4><div class="content"><ul><li>В сайта не е посочена дата на публикуване</li></ul></br></div>';
         }
     }
     

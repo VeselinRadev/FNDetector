@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
-
+@php
+    header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
+    header("Pragma: no-cache"); 
+@endphp
 <div class="container-home container--max-width" style="background-image: linear-gradient(#FDFDFD, #F5F5F5); margin-top:0px;"> 
     <div class="top top--max-width" style="margin-bottom:16px;">
         <p>Fake News Detector е сайт, който дава възможност да се отсеят реалните от фалшивите новини, които в днешно време заливат интернет пространството. Това се случва като конкретната новина се проверява внимателно в подбран списък от надеждни сайтове.</p>
@@ -18,6 +21,9 @@
             </ul>
         </div>   
     </div>  
+    @if (session('error'))
+        <p  class="alert alert-danger">{{ session('error') }}</p>
+    @endif
     <form class="search-wrapper" action="{{route('article_get_info')}}" method="post">
         {{ csrf_field() }}
         <input type="text" name="article_url" required autocomplete="off" autofocus="true" placeholder="Постави линка тук..."/>
@@ -69,5 +75,4 @@
         </ul>
     </div>
 </div>
-
 @endsection

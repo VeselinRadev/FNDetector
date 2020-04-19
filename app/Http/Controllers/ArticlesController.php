@@ -7,23 +7,31 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Events\ArticleSearched;
 use App\Events\DataCollected;
+use ErrorException;
 
 class ArticlesController extends Controller
 {
     public function getInfo(Request $request)
     {
+
         //reads the url from the input
         $article = new Article();
         $article->url = $request->input('article_url'); 
+    
+        //Check if the passed url is valid 
+        try{
+            //calling event that article is passed to the server
+            event(new ArticleSearched($article));  
 
-        //calling event that article is passed to the server
-        event(new ArticleSearched($article));  
-
-        //building page for cropping the text
-        return view('cropText')
-            ->with('text', $article->text)
-            ->with('url', $article->url)
-            ->with('title', $article->title);
+            //building page for cropping the text
+            return view('cropText')
+                ->with('text', $article->text)
+                ->with('url', $article->url)
+                ->with('title', $article->title);
+                
+        }catch(ErrorException $e){
+            return back()->withError('Въведеният линк: "'. $request->input('article_url'). '" не е валиден ')->withInput();
+        }
     }
 
     public function cropText(Request $request){
